@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<head>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+</head>
+<body>    
+         <h1>@ViewBag.Teste</h1>    
+         <ul id="table"></ul>
+    
+</body>
+<script>
+
+    $('document').ready(function(){
+         $.ajax({
+          method: "Get",
+          url: "http://localhost:5000/book/"
+        })
+         .done(function (data) {
+             data.forEach(function(book){
+
+                /// Show book array in console.
+                console.log(data);            
+
+                ///Create list the books in page.                 
+                 $('#table').append(                                              
+                        "<li>" + 
+                            "<div>"+
+                                "<h2>" + book.title + "</h2>"+
+                                "<p>" + book.subTitle + "</p>"+
+                                "<p>" + book.description + "</p>" +
+                                "<p>" + book.year + "</p>" +
+                            "</div>"+                            
+                        "</li>"
+                 );
+             })
+                                       
+         })
+    });
+
+</script>
+<footer>
+
+</footer>
